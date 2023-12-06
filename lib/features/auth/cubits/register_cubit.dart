@@ -4,7 +4,7 @@ import 'package:meta/meta.dart';
 
 import '../../../core/helpers/dio_helper.dart';
 import '../../../core/utils/end_points.dart';
-import '../models/user_model.dart';
+import '../models/auth_model.dart';
 
 part 'register_state.dart';
 
@@ -12,7 +12,7 @@ class RegisterCubit extends Cubit<RegisterState> {
   RegisterCubit() : super(RegisterInitialState());
 
 
-  LoginModel userModel = LoginModel();
+  AuthModel userModel = AuthModel();
 
   static RegisterCubit get(context) => BlocProvider.of(context);
 
@@ -25,7 +25,7 @@ class RegisterCubit extends Cubit<RegisterState> {
       "phone": phone
     }).then((value) {
       print(value.data);
-      userModel = LoginModel.fromJson(value.data);
+      userModel = AuthModel.fromJson(value.data);
       print(userModel.data);
       emit(RegisterSuccessState(userModel));
     }).catchError((error) {

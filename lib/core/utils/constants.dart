@@ -8,9 +8,8 @@ class Constants{
   static const String baseURL = "https://student.valuxapps.com/api/";
 
 
-  static late   String  token ;
 
 
-
+  static String  token='token';
 
 }

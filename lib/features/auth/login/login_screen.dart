@@ -8,6 +8,7 @@ import '../../../core/helpers/cache_helper.dart';
 import '../../../core/helpers/spacing.dart';
 import '../../../core/routing/routes.dart';
 import '../../../core/theming/styles.dart';
+import '../../../core/utils/constants.dart';
 import '../../../core/widgets/app_text_button.dart';
 import '../../../core/widgets/app_text_form_field.dart';
 import '../cubits/login_cubit.dart';
@@ -42,6 +43,7 @@ class _LoginScreenState extends State<LoginScreen> {
             CacheHelper.saveData(key: 'token', value: state.loginModel.data!.token)
                 .then((value) {
               context.pushReplacementNamed(Routes.homeScreen);
+              Constants.token = state.loginModel.data!.token!;
             });
           } else {
             Fluttertoast.showToast(
@@ -104,6 +106,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                   LoginCubit.get(context).userLogin(
                                       email: emailController.text,
                                       password: passwordController.text);
+
                                 }
                               },
                             ),

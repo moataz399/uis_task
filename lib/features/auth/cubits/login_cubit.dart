@@ -4,14 +4,14 @@ import 'package:meta/meta.dart';
 
 import '../../../core/helpers/dio_helper.dart';
 import '../../../core/utils/end_points.dart';
-import '../models/user_model.dart';
+import '../models/auth_model.dart';
 
 part 'login_state.dart';
 
 class LoginCubit extends Cubit<LoginState> {
   LoginCubit() : super(LoginInitialState());
 
-  LoginModel userModel = LoginModel();
+  AuthModel userModel = AuthModel();
 
   static LoginCubit get(context) => BlocProvider.of(context);
 
@@ -22,7 +22,7 @@ class LoginCubit extends Cubit<LoginState> {
       'password': password,
     }).then((value) {
       print(value.data);
-      userModel = LoginModel.fromJson(value.data);
+      userModel = AuthModel.fromJson(value.data);
       emit(LoginSuccessState(userModel));
     }).catchError((error) {
       print(error.toString());

@@ -8,6 +8,7 @@ import '../../../core/helpers/cache_helper.dart';
 import '../../../core/helpers/spacing.dart';
 import '../../../core/routing/routes.dart';
 import '../../../core/theming/styles.dart';
+import '../../../core/utils/constants.dart';
 import '../../../core/widgets/app_text_button.dart';
 import '../../../core/widgets/app_text_form_field.dart';
 import '../cubits/register_cubit.dart';
@@ -44,6 +45,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     key: 'token', value: state.registerModel.data!.token)
                 .then((value) {
               context.pushReplacementNamed(Routes.homeScreen);
+              Constants.token = state.registerModel.data!.token!;
             });
           } else {
             Fluttertoast.showToast(
@@ -114,6 +116,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     name: nameController.text,
                                     phone: phoneController.text,
                                     password: passwordController.text);
+
                               }
                             },
                           ),
