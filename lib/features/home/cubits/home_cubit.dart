@@ -46,7 +46,7 @@ class HomeCubit extends Cubit<HomeState> {
     emit(ChangeBottomNav());
   }
 
-  void getProductsData() async {
+  Future<void> getProductsData() async {
     emit(HomeLoadingState());
 
     await DioHelper.getData(url: HOME, token: Constants.token).then((value) {
@@ -89,10 +89,10 @@ class HomeCubit extends Cubit<HomeState> {
     });
   }
 
-  void getFavData() {
+  Future<void> getFavData() async {
     emit(GetFavoritesLoading());
 
-    DioHelper.getData(
+    await DioHelper.getData(
       url: FAVORITES,
       token: CacheHelper.getData(key: 'token'),
     ).then((value) {
@@ -106,8 +106,6 @@ class HomeCubit extends Cubit<HomeState> {
   }
 
   ProductDetails? productDetails;
-
-
 
   Future<void> getProductDetails({required int id}) async {
     emit(GetProductDetailsLoading());

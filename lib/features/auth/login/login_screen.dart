@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:uis_task/core/helpers/extensions.dart';
+import 'package:uis_task/features/home/cubits/home_cubit.dart';
 
 import '../../../core/helpers/cache_helper.dart';
 import '../../../core/helpers/spacing.dart';
@@ -40,15 +41,18 @@ class _LoginScreenState extends State<LoginScreen> {
         if (state is LoginSuccessState) {
           if (state.loginModel.status == true) {
             print(state.loginModel.message);
-           
-            CacheHelper.saveData(key: 'token', value: state.loginModel.data!.token)
 
-                .then((value) {
+            CacheHelper.saveData(
+                    key: 'token', value: state.loginModel.data!.token)
+                .then((value) async {
+              await HomeCubit.get(context).getFavData();
+              await HomeCubit.get(context).getProductsData();
               context.pushReplacementNamed(Routes.homeScreen);
 
+              // Future.delayed(const Duration(seconds: 2), () {
+              // });
               Constants.token = state.loginModel.data!.token!;
-              print( Constants.token );
-
+              print(Constants.token);
             });
           } else {
             Fluttertoast.showToast(
@@ -111,7 +115,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                   LoginCubit.get(context).userLogin(
                                       email: emailController.text,
                                       password: passwordController.text);
-
                                 }
                               },
                             ),

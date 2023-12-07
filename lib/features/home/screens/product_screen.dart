@@ -28,13 +28,11 @@ class ProductsScreen extends StatelessWidget {
                 backgroundColor: Colors.red,
                 textColor: Colors.white,
                 fontSize: 16.0);
-
-
           }
         }
       },
       builder: (context, state) {
-        if (cubit.productsModel != null ) {
+        if (cubit.productsModel != null) {
           return SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
             child: Column(
@@ -77,13 +75,13 @@ class ProductsScreen extends StatelessWidget {
                   crossAxisCount: 2,
                   mainAxisSpacing: 1,
                   crossAxisSpacing: 1,
-                  childAspectRatio: 1 / 1.72,
+                  childAspectRatio: 1 / 1.73,
                   physics: const NeverScrollableScrollPhysics(),
                   children: List.generate(
                       cubit.productsModel!.data!.products!.length,
                       (index) => GestureDetector(
                             onTap: () async {
-                             await cubit.getProductDetails(
+                              await cubit.getProductDetails(
                                   id: cubit.productsModel!.data!
                                       .products![index].id!);
                               context.pushNamed(Routes.productDetailsScreen);

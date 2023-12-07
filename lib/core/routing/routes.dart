@@ -1,8 +1,6 @@
+import 'package:flutter/material.dart';
 
-
-
-class Routes{
-
+class Routes {
   static const String loginScreen = "/loginScreen";
   static const String registerScreen = "/registerScreen";
 
@@ -13,4 +11,10 @@ class Routes{
 
   static const String productDetailsScreen = "/productDetailsScreen";
 
+  static const String mapScreen = "/mapScreen";
+
+
 }
+
+void navigateAndFinish(context, widget) => Navigator.pushAndRemoveUntil(
+    context, MaterialPageRoute(builder: (context) => widget), (route) => false);

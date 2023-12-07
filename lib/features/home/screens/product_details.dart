@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:uis_task/core/helpers/extensions.dart';
+import 'package:uis_task/core/routing/routes.dart';
+import 'package:uis_task/core/theming/styles.dart';
+import 'package:uis_task/core/widgets/app_text_button.dart';
 import 'package:uis_task/core/widgets/big_text.dart';
+import 'package:uis_task/core/widgets/small_text.dart';
 
 import '../../../core/helpers/spacing.dart';
 import '../../../core/theming/colors.dart';
+import '../../../core/widgets/expandable_text.dart';
 import '../cubits/home_cubit.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
-
   const ProductDetailsScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomeCubit, HomeState>(
@@ -17,80 +23,101 @@ class ProductDetailsScreen extends StatelessWidget {
         var cubit = HomeCubit.get(context);
 
         return Scaffold(
-          appBar: AppBar(),
+          appBar: AppBar(
+            actions: [
+              Row(
+                children: [
+                  //SmallText(text: "Location",size: 14,color: Colors.black87,height:2),
+                  IconButton(
+                      onPressed: () {
+                        context.pushNamed(Routes.mapScreen);
+                      },
+                      icon: Icon(
+                        Icons.location_on_rounded,
+                        color: AppColors.mainBlue,
+                      )),
+                ],
+              )
+            ],
+          ),
           body: SafeArea(
             child: SingleChildScrollView(
               physics: const BouncingScrollPhysics(),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Stack(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.symmetric(vertical: 10.0.h),
-                        child: Center(
-                          child: Container(
-                            height: 250,
-                            width: 200,
-                            decoration: BoxDecoration(
-                                image: DecorationImage(
-                              fit: BoxFit.fill,
-                              image: NetworkImage(
-                                cubit.productDetails!.data!.image!,
-                              ),
-                            )),
+              child: Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Stack(
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.symmetric(vertical: 10.0.h),
+                          child: Center(
+                            child: Container(
+                              height: 250,
+                              width: 200,
+                              decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                fit: BoxFit.fill,
+                                image: NetworkImage(
+                                  cubit.productDetails!.data!.image!,
+                                ),
+                              )),
+                            ),
                           ),
                         ),
-                      ),
-                      if (cubit.productDetails!.data!.discount != 0)
-                        Container(
-                          height: 30,
-                          width: 100,
-                          padding: const EdgeInsets.symmetric(horizontal: 5),
-                          color: Colors.red,
-                          child: const Text('Discount',
-                              style: TextStyle(
-                                  fontSize: 20.0, color: Colors.white)),
-                        )
-                    ],
-                  ),
-                  verticalSpace(15),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 5.w),
-                    child: BigText(
-                      text: cubit.productDetails!.data!.name!,
-                      size: 25,
-                      color: Colors.black,
-                      textOverflow: TextOverflow.fade,
+                        if (cubit.productDetails!.data!.discount != 0)
+                          Container(
+                            height: 30,
+                            width: 100,
+                            padding: const EdgeInsets.symmetric(horizontal: 5),
+                            color: Colors.red,
+                            child: const Text('Discount',
+                                style: TextStyle(
+                                    fontSize: 20.0, color: Colors.white)),
+                          )
+                      ],
                     ),
-                  ),
-                  verticalSpace(8),
-                  Row(
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 5.w),
-                        child: BigText(
-                          text: cubit.productDetails!.data!.price.toString(),
-                          size: 25,
-                          color: AppColors.mainBlue,
-                          textOverflow: TextOverflow.fade,
-                        ),
+                    verticalSpace(15),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 5.w),
+                      child: BigText(
+                        text: cubit.productDetails!.data!.name!,
+                        size: 25,
+                        color: Colors.black,
+                        textOverflow: TextOverflow.fade,
                       ),
-                      if (cubit.productDetails!.data!.discount != 0)
-                        Text(
-                          '${cubit.productDetails!.data!.oldPrice}',
-                          overflow: TextOverflow.ellipsis,
-                          style: const TextStyle(
-                            color: Colors.grey,
-                            fontSize: 22,
-                            decoration: TextDecoration.lineThrough,
-                          ),
+                    ),
+                    verticalSpace(8),
+                    Row(
+                      children: [
+                        Row(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 5.w),
+                              child: BigText(
+                                text: "${cubit.productDetails!.data!.price}\$",
+                                size: 25,
+                                color: AppColors.mainBlue,
+                                textOverflow: TextOverflow.fade,
+                              ),
+                            ),
+                            if (cubit.productDetails!.data!.discount != 0)
+                              Text(
+                                '${cubit.productDetails!.data!.oldPrice}',
+                                overflow: TextOverflow.ellipsis,
+                                style: const TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 22,
+                                  decoration: TextDecoration.lineThrough,
+                                ),
+                              ),
+                          ],
                         ),
-                    ],
-                  ),
-                  Center(
-                    child: Padding(
+                      ],
+                    ),
+                    Padding(
                       padding: EdgeInsets.symmetric(horizontal: 5.w),
                       child: BigText(
                         text: 'Description:',
@@ -99,17 +126,16 @@ class ProductDetailsScreen extends StatelessWidget {
                         textOverflow: TextOverflow.fade,
                       ),
                     ),
-                  ),
-                  verticalSpace(6),
-                  Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 5),
-                    child: Text(
-                      '${cubit.productDetails!.data!.description}',
-                      style: const TextStyle(),
+                    verticalSpace(6),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 5),
+                      child: ExpandableText(
+                        text: '${cubit.productDetails!.data!.description}',
+                      ),
                     ),
-                  ),
-                  verticalSpace(20),
-                ],
+                    verticalSpace(20),
+                  ],
+                ),
               ),
             ),
           ),
@@ -117,6 +143,8 @@ class ProductDetailsScreen extends StatelessWidget {
       },
     );
   }
-
-
 }
+// child: Text(
+// '${cubit.productDetails!.data!.description}',
+// style: const TextStyle(),
+// ),

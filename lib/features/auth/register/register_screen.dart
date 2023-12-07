@@ -11,6 +11,7 @@ import '../../../core/theming/styles.dart';
 import '../../../core/utils/constants.dart';
 import '../../../core/widgets/app_text_button.dart';
 import '../../../core/widgets/app_text_form_field.dart';
+import '../../home/cubits/home_cubit.dart';
 import '../cubits/register_cubit.dart';
 import '../widgets/already_have_account.dart';
 
@@ -46,7 +47,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
             CacheHelper.saveData(
                     key: 'token', value: state.registerModel.data!.token)
                 .then((value) {
-              context.pushReplacementNamed(Routes.homeScreen);
+              HomeCubit.get(context).getFavData();
+              HomeCubit.get(context).getProductsData();
+
+              Future.delayed(const Duration(seconds: 2), () {
+                context.pushReplacementNamed(Routes.homeScreen);
+              });
 
               Constants.token = state.registerModel.data!.token!;
               print( Constants.token );

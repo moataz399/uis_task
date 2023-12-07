@@ -147,21 +147,22 @@ Widget buildSearchItems(model, context, {bool isOldPrice = true}) => Padding(
                               decoration: TextDecoration.lineThrough),
                         ),
                       const Spacer(),
-                      CircleAvatar(
-                        backgroundColor: HomeCubit.get(context).fav[model.id]!
-                            ? AppColors.mainBlue
-                            : Colors.grey,
-                        child: IconButton(
-                            padding: const EdgeInsets.all(0),
-                            onPressed: () {
-                              HomeCubit.get(context).changeFav(model.id);
-                            },
-                            icon: const Icon(
-                              Icons.favorite_border,
-                              size: 12,
-                              color: Colors.white,
-                            )),
-                      )
+                      if (HomeCubit.get(context).fav[model.id] != null)
+                        CircleAvatar(
+                          backgroundColor: HomeCubit.get(context).fav[model.id]!
+                              ? AppColors.mainBlue
+                              : Colors.grey,
+                          child: IconButton(
+                              padding: const EdgeInsets.all(0),
+                              onPressed: () {
+                                HomeCubit.get(context).changeFav(model.id);
+                              },
+                              icon: const Icon(
+                                Icons.favorite_border,
+                                size: 12,
+                                color: Colors.white,
+                              )),
+                        )
                     ],
                   ),
                 ],

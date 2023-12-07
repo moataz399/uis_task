@@ -5,6 +5,7 @@ import 'package:uis_task/core/routing/routes.dart';
 import 'package:uis_task/features/home/screens/product_details.dart';
 import 'package:uis_task/features/home/screens/product_screen.dart';
 import 'package:uis_task/features/home/screens/search_screen.dart';
+import 'package:uis_task/features/map/screens/map_screen.dart';
 
 import '../../features/auth/cubits/login_cubit.dart';
 import '../../features/auth/cubits/register_cubit.dart';
@@ -22,6 +23,10 @@ class AppRouter {
       case Routes.homeScreen:
         return MaterialPageRoute(
           builder: (_) => const HomeScreen(),
+        );
+      case Routes.mapScreen:
+        return MaterialPageRoute(
+          builder: (_) => const MapScreen(),
         );
 
       case Routes.productsScreen:
