@@ -1,3 +1,128 @@
+// import 'dart:async';
+// import 'package:flutter/material.dart';
+// import 'package:flutter_polyline_points/flutter_polyline_points.dart';
+// import 'package:flutter_screenutil/flutter_screenutil.dart';
+// import 'package:geolocator/geolocator.dart';
+// import 'package:google_maps_flutter/google_maps_flutter.dart';
+// import 'package:uis_task/core/helpers/location_helper.dart';
+// import 'package:uis_task/core/utils/constants.dart';
+//
+// import '../../../core/theming/colors.dart';
+//
+// class MapScreen extends StatefulWidget {
+//   @override
+//   _MapScreenState createState() => _MapScreenState();
+// }
+//
+// class _MapScreenState extends State<MapScreen> {
+//   Set<Marker> markers = Set();
+//   Set<Polyline> polylines = Set();
+//
+//   // Add your API key here
+//   String apiKey = Constants.taskMapApiKey;
+//
+//   static Position? position;
+//
+//   Completer<GoogleMapController> mapController = Completer();
+//   static final CameraPosition _myCurrentLocationCameraPosition = CameraPosition(
+//       bearing: 0.0,
+//       target: LatLng(position!.latitude, position!.longitude),
+//       zoom: 17,
+//       tilt: 0.0);
+//   double destLatitude = 31.444797667923186, destLongitude = 31.665512167004664;
+//
+//   @override
+//   void initState() {
+//     super.initState();
+//     getCurrentLocation();
+//     _addMarkers();
+//   }
+//
+//   void _addMarkers() {
+//     // Add markers for the start and end points
+//     markers.add(Marker(
+//       markerId: MarkerId("start"),
+//       position: LatLng(position!.latitude, position!.longitude),
+//     ));
+//     markers.add(Marker(
+//       markerId: MarkerId("end"),
+//       position: LatLng(destLatitude, destLongitude),
+//     ));
+//   }
+//
+//   void _getPolylines() async {
+//     PolylinePoints polylinePoints = PolylinePoints();
+//     List<PointLatLng> result = await polylinePoints.getRouteBetweenCoordinates(
+//       Constants.taskMapApiKey,
+//       position!.latitude,
+//       position!.longitude,
+//       destLatitude,
+//       destLongitude,
+//     );
+//
+//     if (result.isNotEmpty) {
+//       result.forEach((PointLatLng point) {
+//         polylines.add(Polyline(
+//           width: 5,
+//           polylineId: PolylineId("poly"),
+//           color: Colors.blue,
+//           points: polylines.add(LatLng(point.latitude, point.longitude)),
+//         ));
+//       });
+//     }
+//   }
+//
+//   Future<void> getCurrentLocation() async {
+//     position = await LocationHelper.getCurrentLocation().whenComplete(() {
+//       setState(() {});
+//     });
+//   }
+//
+//   Future<void> _goToMYCurrentLocation() async {
+//     final GoogleMapController controller = await mapController.future;
+//     controller.animateCamera(
+//         CameraUpdate.newCameraPosition(_myCurrentLocationCameraPosition));
+//   }
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: Text("Route Map"),
+//       ),
+//       body: GoogleMap(
+//         onMapCreated: (GoogleMapController googleMapController) {
+//           mapController.complete(googleMapController);
+//           _getPolylines();
+//         },
+//         myLocationEnabled: true,
+//         zoomControlsEnabled: false,
+//         myLocationButtonEnabled: false,
+//         markers: markers,
+//         polylines: polylines,
+//         mapType: MapType.normal,
+//         initialCameraPosition: _myCurrentLocationCameraPosition,
+//       ),
+//       floatingActionButton: Container(
+//         margin: EdgeInsets.fromLTRB(0, 0, 8.w, 30.h),
+//         child: FloatingActionButton(
+//           backgroundColor: AppColors.mainBlue,
+//           onPressed: _goToMYCurrentLocation,
+//           child: const Icon(
+//             Icons.place,
+//             color: Colors.white,
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
+//
+//
+//
+//
+//
+
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

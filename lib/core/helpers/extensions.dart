@@ -18,3 +18,6 @@ extension Navigation on BuildContext {
 
   void pop() => Navigator.of(this).pop();
 }
+
+void navigateAndFinish(context, widget) => Navigator.pushAndRemoveUntil(
+    context, MaterialPageRoute(builder: (context) => widget), (route) => false);

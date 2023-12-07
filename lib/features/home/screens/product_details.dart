@@ -3,11 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:uis_task/core/helpers/extensions.dart';
 import 'package:uis_task/core/routing/routes.dart';
-import 'package:uis_task/core/theming/styles.dart';
-import 'package:uis_task/core/widgets/app_text_button.dart';
 import 'package:uis_task/core/widgets/big_text.dart';
-import 'package:uis_task/core/widgets/small_text.dart';
-
 import '../../../core/helpers/spacing.dart';
 import '../../../core/theming/colors.dart';
 import '../../../core/widgets/expandable_text.dart';
@@ -21,18 +17,17 @@ class ProductDetailsScreen extends StatelessWidget {
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
         var cubit = HomeCubit.get(context);
-
         return Scaffold(
           appBar: AppBar(
+            backgroundColor: Colors.white,
             actions: [
               Row(
                 children: [
-                  //SmallText(text: "Location",size: 14,color: Colors.black87,height:2),
                   IconButton(
                       onPressed: () {
                         context.pushNamed(Routes.mapScreen);
                       },
-                      icon: Icon(
+                      icon: const Icon(
                         Icons.location_on_rounded,
                         color: AppColors.mainBlue,
                       )),

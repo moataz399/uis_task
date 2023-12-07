@@ -4,16 +4,17 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:uis_task/core/helpers/extensions.dart';
 
-import '../../../core/helpers/cache_helper.dart';
-import '../../../core/helpers/spacing.dart';
-import '../../../core/routing/routes.dart';
-import '../../../core/theming/styles.dart';
-import '../../../core/utils/constants.dart';
-import '../../../core/widgets/app_text_button.dart';
-import '../../../core/widgets/app_text_form_field.dart';
-import '../../home/cubits/home_cubit.dart';
-import '../cubits/register_cubit.dart';
-import '../widgets/already_have_account.dart';
+import '../../../../core/helpers/cache_helper.dart';
+import '../../../../core/helpers/spacing.dart';
+import '../../../../core/routing/routes.dart';
+import '../../../../core/theming/styles.dart';
+import '../../../../core/utils/constants.dart';
+import '../../../../core/widgets/app_text_button.dart';
+import '../../../../core/widgets/app_text_form_field.dart';
+import '../../../home/cubits/home_cubit.dart';
+import '../../cubits/register_cubit.dart';
+import '../../widgets/already_have_account.dart';
+
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});

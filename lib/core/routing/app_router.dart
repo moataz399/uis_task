@@ -9,8 +9,8 @@ import 'package:uis_task/features/map/screens/map_screen.dart';
 
 import '../../features/auth/cubits/login_cubit.dart';
 import '../../features/auth/cubits/register_cubit.dart';
-import '../../features/auth/login/login_screen.dart';
-import '../../features/auth/register/register_screen.dart';
+import '../../features/auth/screens/login/login_screen.dart';
+import '../../features/auth/screens/register/register_screen.dart';
 import '../../features/home/home_screen.dart';
 
 class AppRouter {
