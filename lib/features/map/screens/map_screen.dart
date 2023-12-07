@@ -40,34 +40,18 @@ class _MapScreenState extends State<MapScreen> {
       target: LatLng(position!.latitude, position!.longitude),
       zoom: 17,
       tilt: 0.0);
-  double destLatitude = 31.444797667923186,
-      destLongitude = 31.665512167004664;
+  double destLatitude = 31.444797667923186, destLongitude = 31.665512167004664;
 
   Map<MarkerId, Marker> markers = {};
   Map<PolylineId, Polyline> polyLines = {};
   List<LatLng> polylineCoordinates = [];
   PolylinePoints polylinePoints = PolylinePoints();
 
-
-
-
-
-
-
-
   _addMarker(LatLng position, String id, BitmapDescriptor descriptor) {
     MarkerId markerId = MarkerId(id);
     Marker marker =
         Marker(markerId: markerId, icon: descriptor, position: position);
     markers[markerId] = marker;
-  }
-
-  _addPolyLine() {
-    PolylineId id = PolylineId("poly");
-    Polyline polyline = Polyline(
-        polylineId: id, color: Colors.red, points: polylineCoordinates);
-    polyLines[id] = polyline;
-    setState(() {});
   }
 
   _getPolyline() async {
@@ -85,6 +69,14 @@ class _MapScreenState extends State<MapScreen> {
     _addPolyLine();
   }
 
+  _addPolyLine() {
+    PolylineId id = PolylineId("poly");
+    Polyline polyline = Polyline(
+        polylineId: id, color: Colors.red, points: polylineCoordinates);
+    polyLines[id] = polyline;
+    setState(() {});
+  }
+
   Future<void> getCurrentLocation() async {
     position = await LocationHelper.getCurrentLocation().whenComplete(() {
       setState(() {});
@@ -96,7 +88,6 @@ class _MapScreenState extends State<MapScreen> {
     controller.animateCamera(
         CameraUpdate.newCameraPosition(_myCurrentLocationCameraPosition));
     _getPolyline();
-
   }
 
   Widget buildMap() {
@@ -113,7 +104,6 @@ class _MapScreenState extends State<MapScreen> {
       mapType: MapType.normal,
     );
   }
-
 
   @override
   Widget build(BuildContext context) {
