@@ -24,9 +24,12 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => const HomeScreen(),
         );
+
+
+
       case Routes.mapScreen:
         return MaterialPageRoute(
-          builder: (_) => const MapScreen(),
+          builder: (_) =>  MapScreen(),
         );
 
       case Routes.productsScreen:

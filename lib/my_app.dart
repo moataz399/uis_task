@@ -5,6 +5,7 @@ import 'package:uis_task/features/auth/cubits/login_cubit.dart';
 import 'package:uis_task/features/auth/cubits/register_cubit.dart';
 import 'package:uis_task/features/home/cubits/home_cubit.dart';
 import 'package:uis_task/features/home/cubits/search_cubit.dart';
+import 'package:uis_task/features/map/cubits/map_cubit.dart';
 import 'core/di/di.dart';
 import 'core/helpers/cache_helper.dart';
 import 'core/routing/app_router.dart';
@@ -25,6 +26,7 @@ class MyApp extends StatelessWidget {
               ..getProductsData()
               ..getFavData()),
         BlocProvider(create: (BuildContext context) => LoginCubit()),
+        BlocProvider(create: (BuildContext context) => getIt<MapCubit>()),
         BlocProvider(create: (BuildContext context) => RegisterCubit()),
         BlocProvider(create: (BuildContext context) => SearchCubit()),
       ],
