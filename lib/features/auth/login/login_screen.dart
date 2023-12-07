@@ -40,10 +40,15 @@ class _LoginScreenState extends State<LoginScreen> {
         if (state is LoginSuccessState) {
           if (state.loginModel.status == true) {
             print(state.loginModel.message);
+           
             CacheHelper.saveData(key: 'token', value: state.loginModel.data!.token)
+
                 .then((value) {
               context.pushReplacementNamed(Routes.homeScreen);
+
               Constants.token = state.loginModel.data!.token!;
+              print( Constants.token );
+
             });
           } else {
             Fluttertoast.showToast(
@@ -115,7 +120,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 onTap: () {
                                   context.pushNamed(Routes.registerScreen);
                                 },
-                                child: HaveAccountText(
+                                child: const HaveAccountText(
                                   haveAccount: 'Don\'t have an account?',
                                   type: 'Register',
                                 )),

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:uis_task/core/routing/routes.dart';
+import 'package:uis_task/features/home/screens/product_details.dart';
 import 'package:uis_task/features/home/screens/product_screen.dart';
 import 'package:uis_task/features/home/screens/search_screen.dart';
 
@@ -21,18 +21,21 @@ class AppRouter {
     switch (settings.name) {
       case Routes.homeScreen:
         return MaterialPageRoute(
-          builder: (_) => HomeScreen(),
+          builder: (_) => const HomeScreen(),
         );
 
       case Routes.productsScreen:
         return MaterialPageRoute(
-          builder: (_) => ProductsScreen(),
+          builder: (_) => const ProductsScreen(),
         );
-
 
       case Routes.searchScreen:
         return MaterialPageRoute(
           builder: (_) => const SearchScreen(),
+        );
+      case Routes.productDetailsScreen:
+        return MaterialPageRoute(
+          builder: (_) => const ProductDetailsScreen(),
         );
 
       case Routes.loginScreen:
@@ -44,7 +47,7 @@ class AppRouter {
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
             create: (context) => RegisterCubit(),
-            child: RegisterScreen(),
+            child: const RegisterScreen(),
           ),
         );
       default:

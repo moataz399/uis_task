@@ -8,7 +8,7 @@ import '../../../../core/theming/styles.dart';
 
 class HaveAccountText extends StatelessWidget {
 
-  HaveAccountText({required this.haveAccount,required this.type });
+  const HaveAccountText({super.key, required this.haveAccount,required this.type });
 
   final String type ;
 

@@ -16,9 +16,12 @@ class AppTextFormField extends StatelessWidget {
   final bool? isObscureText;
   final Widget? suffixIcon;
   final TextEditingController controller;
+  final Function(String)? onSubmitted;
+
 
   const AppTextFormField({
     super.key,
+    this.onSubmitted,
     this.contentPadding,
     this.focusedBorder,
     this.enabledBorder,
@@ -33,6 +36,8 @@ class AppTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+
+      onFieldSubmitted: (String value) => onSubmitted,
       controller: controller,
       validator: (value) =>
       value!.isEmpty ? 'please enter your $hintText' : null,

@@ -1,11 +1,11 @@
-class FavModel {
+class SearchModel {
   bool? status;
   dynamic message;
   Data? data;
 
-  FavModel({this.status, this.message, this.data});
+  SearchModel({this.status, this.message, this.data});
 
-  FavModel.fromJson(Map<String, dynamic> json) {
+  SearchModel.fromJson(Map<String, dynamic> json) {
     status = json['status'];
     message = json['message'];
     data = json['data'] != null ? Data.fromJson(json['data']) : null;
@@ -24,7 +24,7 @@ class FavModel {
 
 class Data {
   int? currentPage;
-  List<FavData>? data;
+  List<Product>? data;
   String? firstPageUrl;
   int? from;
   int? lastPage;
@@ -53,9 +53,9 @@ class Data {
   Data.fromJson(Map<String, dynamic> json) {
     currentPage = json['current_page'];
     if (json['data'] != null) {
-      data = <FavData>[];
+      data = <Product>[];
       json['data'].forEach((v) {
-        data!.add(FavData.fromJson(v));
+        data!.add(Product.fromJson(v));
       });
     }
     firstPageUrl = json['first_page_url'];
@@ -90,27 +90,6 @@ class Data {
   }
 }
 
-class FavData {
-  int? id;
-  Product? product;
-
-  FavData({this.id, this.product});
-
-  FavData.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    product =
-    json['product'] != null ? Product.fromJson(json['product']) : null;
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    if (product != null) {
-      data['product'] = product!.toJson();
-    }
-    return data;
-  }
-}
 
 class Product {
   int? id;
