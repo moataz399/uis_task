@@ -50,8 +50,8 @@ class ProductDetailsScreen extends StatelessWidget {
                           padding: EdgeInsets.symmetric(vertical: 10.0.h),
                           child: Center(
                             child: Container(
-                              height: 250,
-                              width: 200,
+                              height: 250.h,
+                              width: 200.w,
                               decoration: BoxDecoration(
                                   image: DecorationImage(
                                 fit: BoxFit.fill,
@@ -66,11 +66,11 @@ class ProductDetailsScreen extends StatelessWidget {
                           Container(
                             height: 30,
                             width: 100,
-                            padding: const EdgeInsets.symmetric(horizontal: 5),
+                            padding:  EdgeInsets.symmetric(horizontal: 5.w),
                             color: Colors.red,
-                            child: const Text('Discount',
+                            child:  Text('Discount',
                                 style: TextStyle(
-                                    fontSize: 20.0, color: Colors.white)),
+                                    fontSize: 20.0.sp, color: Colors.white)),
                           )
                       ],
                     ),
@@ -102,9 +102,9 @@ class ProductDetailsScreen extends StatelessWidget {
                               Text(
                                 '${cubit.productDetails!.data!.oldPrice}',
                                 overflow: TextOverflow.ellipsis,
-                                style: const TextStyle(
+                                style:  TextStyle(
                                   color: Colors.grey,
-                                  fontSize: 22,
+                                  fontSize: 22.sp,
                                   decoration: TextDecoration.lineThrough,
                                 ),
                               ),
@@ -116,14 +116,14 @@ class ProductDetailsScreen extends StatelessWidget {
                       padding: EdgeInsets.symmetric(horizontal: 5.w),
                       child: BigText(
                         text: 'Description:',
-                        size: 18,
+                        size: 18.sp,
                         color: Colors.black87,
                         textOverflow: TextOverflow.fade,
                       ),
                     ),
                     verticalSpace(6),
                     Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 5),
+                      padding:  EdgeInsets.symmetric(horizontal: 5.w),
                       child: ExpandableText(
                         text: '${cubit.productDetails!.data!.description}',
                       ),
@@ -139,7 +139,3 @@ class ProductDetailsScreen extends StatelessWidget {
     );
   }
 }
-// child: Text(
-// '${cubit.productDetails!.data!.description}',
-// style: const TextStyle(),
-// ),

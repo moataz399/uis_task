@@ -90,28 +90,28 @@ Widget buildSearchItems(model, context, {bool isOldPrice = true}) => Padding(
         child: Row(
           children: [
             SizedBox(
-              width: 120,
-              height: 120,
+              width: 120.w,
+              height: 120.h,
               child:
                   Stack(alignment: AlignmentDirectional.bottomStart, children: [
                 Image(
                   image: NetworkImage(model.image),
-                  width: 120,
-                  height: 120,
+                  width: 120.w,
+                  height: 120.h,
                 ),
                 if (model.discount != 0 && isOldPrice)
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 8),
                     color: Colors.red,
-                    child: const Text(
+                    child:  Text(
                       'DISCOUNT',
-                      style: TextStyle(fontSize: 10, color: Colors.white),
+                      style: TextStyle(fontSize: 10.sp, color: Colors.white),
                     ),
                   )
               ]),
             ),
-            const SizedBox(
-              width: 20,
+             SizedBox(
+              width: 20.w,
             ),
             Expanded(
               child: Column(
@@ -121,28 +121,28 @@ Widget buildSearchItems(model, context, {bool isOldPrice = true}) => Padding(
                     model.name,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(fontSize: 14, height: 1.3),
+                    style:  TextStyle(fontSize: 14.sp, height: 1.3),
                   ),
                   const Spacer(),
                   Row(
                     children: [
-                      const SizedBox(
-                        width: 2,
+                       SizedBox(
+                        width: 2.w,
                       ),
                       Text(
                         model.price.toString(),
                         maxLines: 2,
                         style:
-                            const TextStyle(fontSize: 12, color: Colors.blue),
+                             TextStyle(fontSize: 12.sp, color: Colors.blue),
                       ),
-                      const SizedBox(
-                        width: 5,
+                       SizedBox(
+                        width: 5.w,
                       ),
                       if (model.discount != 0 && isOldPrice)
                         Text(
                           model.oldPrice.toString(),
-                          style: const TextStyle(
-                              fontSize: 10,
+                          style:  TextStyle(
+                              fontSize: 10.sp,
                               color: Colors.grey,
                               decoration: TextDecoration.lineThrough),
                         ),

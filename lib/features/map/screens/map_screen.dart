@@ -122,7 +122,6 @@
 //
 //
 //
-
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -232,7 +231,6 @@ class _MapScreenState extends State<MapScreen> {
 
   @override
   Widget build(BuildContext context) {
-    var cubit = MapCubit.get(context);
     return BlocBuilder<MapCubit, MapState>(
       builder: (context, state) {
         return Scaffold(

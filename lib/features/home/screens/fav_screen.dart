@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:uis_task/features/home/data/models/fav_model.dart';
 
 import '../../../core/theming/colors.dart';
@@ -39,26 +40,26 @@ Widget buildFavoritesItem(
     Padding(
       padding: const EdgeInsets.all(20),
       child: SizedBox(
-        height: 120,
+        height: 120.h,
         child: Row(
           children: [
             SizedBox(
-              width: 120,
-              height: 120,
+              width: 120.w,
+              height: 120.h,
               child:
                   Stack(alignment: AlignmentDirectional.bottomStart, children: [
                 Image(
                   image: NetworkImage(model.product!.image!),
-                  width: 120,
-                  height: 120,
+                  width: 120.w,
+                  height: 120.h,
                 ),
                 if (model.product!.discount != 0)
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 8),
                     color: Colors.red,
-                    child: const Text(
+                    child:  Text(
                       'DISCOUNT',
-                      style: TextStyle(fontSize: 10, color: Colors.white),
+                      style: TextStyle(fontSize: 10.sp, color: Colors.white),
                     ),
                   )
               ]),
@@ -74,7 +75,7 @@ Widget buildFavoritesItem(
                     model.product!.name!,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(fontSize: 14, height: 1.3),
+                    style:  TextStyle(fontSize: 14.sp, height: 1.3),
                   ),
                   const Spacer(),
                   Row(
@@ -86,16 +87,16 @@ Widget buildFavoritesItem(
                         model.product!.price!.toString(),
                         maxLines: 2,
                         style:
-                            const TextStyle(fontSize: 12, color: Colors.blue),
+                             TextStyle(fontSize: 12.sp, color: Colors.blue),
                       ),
-                      const SizedBox(
-                        width: 5,
+                       SizedBox(
+                        width: 5.w,
                       ),
                       if (model.product!.discount != 0)
                         Text(
                           model.product!.oldPrice!.toString(),
-                          style: const TextStyle(
-                              fontSize: 10,
+                          style:  TextStyle(
+                              fontSize: 10.sp,
                               color: Colors.grey,
                               decoration: TextDecoration.lineThrough),
                         ),

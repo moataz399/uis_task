@@ -17,7 +17,6 @@ class HomeScreen extends StatelessWidget {
           appBar: AppBar(
             automaticallyImplyLeading: false,
             backgroundColor: Colors.white,
-
             elevation: 0.0,
             actions: [
               IconButton(

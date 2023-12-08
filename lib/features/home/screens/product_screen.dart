@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:uis_task/core/helpers/extensions.dart';
 import 'package:uis_task/core/routing/routes.dart';
@@ -52,13 +53,13 @@ class ProductsScreen extends StatelessWidget {
                       )
                       .toList(),
                   options: CarouselOptions(
-                    height: 250,
+                    height: 250.h,
                     initialPage: 0,
                     autoPlay: true,
                     viewportFraction: 1.0,
                     reverse: false,
                     autoPlayAnimationDuration: const Duration(seconds: 1),
-                    autoPlayInterval: const Duration(seconds: 3),
+                    autoPlayInterval: const Duration(seconds: 2),
                     scrollDirection: Axis.horizontal,
                   ),
                 ),
@@ -98,15 +99,15 @@ class ProductsScreen extends StatelessWidget {
                                         image: NetworkImage(cubit.productsModel!
                                             .data!.products![index].image!),
                                         fit: BoxFit.cover,
-                                        width: 200,
-                                        height: 200,
+                                        width: 200.w,
+                                        height: 200.h,
                                       ),
                                       if (cubit.productsModel!.data!
                                               .products![index].discount !=
                                           0)
                                         Container(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 5),
+                                          padding:  EdgeInsets.symmetric(
+                                              horizontal: 5.w),
                                           color: Colors.red,
                                           child: const Text('Discount',
                                               style: TextStyle(
@@ -116,8 +117,8 @@ class ProductsScreen extends StatelessWidget {
                                     ],
                                   ),
                                   Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 12, vertical: 12),
+                                    padding:  EdgeInsets.symmetric(
+                                        horizontal: 12.w, vertical: 12.h),
                                     child: Column(
                                       children: [
                                         Text(
@@ -146,9 +147,9 @@ class ProductsScreen extends StatelessWidget {
                                               Text(
                                                 '${cubit.productsModel!.data!.products![index].oldPrice!}',
                                                 overflow: TextOverflow.ellipsis,
-                                                style: const TextStyle(
+                                                style:  TextStyle(
                                                   color: Colors.grey,
-                                                  fontSize: 10,
+                                                  fontSize: 10.sp,
                                                   decoration: TextDecoration
                                                       .lineThrough,
                                                 ),

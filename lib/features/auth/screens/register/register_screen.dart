@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:uis_task/core/helpers/extensions.dart';
-
 import '../../../../core/helpers/cache_helper.dart';
 import '../../../../core/helpers/spacing.dart';
 import '../../../../core/routing/routes.dart';
@@ -43,8 +42,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
         if (state is RegisterSuccessState) {
           if (state.registerModel.status == true) {
             print(state.registerModel.message);
-           // Constants.token = state.registerModel.data!.token!;
-
             CacheHelper.saveData(
                     key: 'token', value: state.registerModel.data!.token)
                 .then((value) {
