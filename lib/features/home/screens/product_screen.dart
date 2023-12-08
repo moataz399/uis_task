@@ -166,13 +166,7 @@ class ProductsScreen extends StatelessWidget {
                                                 },
                                                 icon: CircleAvatar(
                                                     radius: 15,
-                                                    backgroundColor: cubit.fav[
-                                                            cubit
-                                                                .productsModel!
-                                                                .data!
-                                                                .products![
-                                                                    index]
-                                                                .id]!
+                                                    backgroundColor: cubit.fav[cubit.productsModel!.data!.products![index].id]!
                                                         ? AppColors.mainBlue
                                                         : Colors.grey,
                                                     child: const Icon(

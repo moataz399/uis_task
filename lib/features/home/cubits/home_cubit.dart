@@ -24,7 +24,7 @@ class HomeCubit extends Cubit<HomeState> {
   ChangeFavoritesModel? changeFavoritesModel;
 
   FavModel? favModel;
-  Map<int, bool> fav = {};
+   Map<int, bool> fav ={};
 
   List<Widget> screen = [
     const ProductsScreen(),
@@ -98,7 +98,6 @@ class HomeCubit extends Cubit<HomeState> {
     ).then((value) {
       favModel = FavModel.fromJson(value.data);
       print(CacheHelper.getData(key: 'token'));
-
       emit(GetFavoritesSuccess());
     }).catchError((error) {
       emit(GetFavoritesError(error));

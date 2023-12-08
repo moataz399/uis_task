@@ -147,9 +147,9 @@ Widget buildSearchItems(model, context, {bool isOldPrice = true}) => Padding(
                               decoration: TextDecoration.lineThrough),
                         ),
                       const Spacer(),
-                      if (HomeCubit.get(context).fav[model.id] != null)
+                      if (HomeCubit.get(context).fav![model.id] != null)
                         CircleAvatar(
-                          backgroundColor: HomeCubit.get(context).fav[model.id]!
+                          backgroundColor: HomeCubit.get(context).fav![model.id]!
                               ? AppColors.mainBlue
                               : Colors.grey,
                           child: IconButton(

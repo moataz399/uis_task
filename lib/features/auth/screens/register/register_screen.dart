@@ -43,9 +43,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
             print(state.registerModel.message);
             CacheHelper.saveData(
                     key: 'token', value: state.registerModel.data!.token)
-                .then((value) {
+                .then((value)async {
               Constants.token = state.registerModel.data!.token!;
-              HomeCubit.get(context).getFavData();
+            await  HomeCubit.get(context).getFavData();
               Future.delayed(const Duration(seconds: 2), () {
                 context.pushReplacementNamed(Routes.homeScreen);
               });
