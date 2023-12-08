@@ -57,7 +57,7 @@ class HomeCubit extends Cubit<HomeState> {
           element.id!: element.inFavorites!,
         });
       }
-
+      getFavData();
       emit(HomeSuccessState());
     }).catchError((error) {
       print(error.toString());

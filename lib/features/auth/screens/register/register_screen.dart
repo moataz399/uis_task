@@ -14,7 +14,6 @@ import '../../../home/cubits/home_cubit.dart';
 import '../../cubits/register_cubit.dart';
 import '../../widgets/already_have_account.dart';
 
-
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
 
@@ -45,16 +44,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
             CacheHelper.saveData(
                     key: 'token', value: state.registerModel.data!.token)
                 .then((value) {
+              Constants.token = state.registerModel.data!.token!;
               HomeCubit.get(context).getFavData();
-              HomeCubit.get(context).getProductsData();
-
               Future.delayed(const Duration(seconds: 2), () {
                 context.pushReplacementNamed(Routes.homeScreen);
               });
 
-              Constants.token = state.registerModel.data!.token!;
-              print( Constants.token );
-
+              print(Constants.token);
             });
           } else {
             Fluttertoast.showToast(
@@ -125,7 +121,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                     name: nameController.text,
                                     phone: phoneController.text,
                                     password: passwordController.text);
-
                               }
                             },
                           ),
@@ -152,4 +147,3 @@ class _RegisterScreenState extends State<RegisterScreen> {
     );
   }
 }
-

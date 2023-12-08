@@ -21,7 +21,7 @@ class SettingsScreen extends StatelessWidget {
           child: TextButton(
             onPressed: () {
               CacheHelper.removeData(key: 'token');
-              HomeCubit.get(context).fav.clear();
+              HomeCubit.get(context).currentIndex=0;
               navigateAndFinish(context, const LoginScreen());
             },
             child: const Text(

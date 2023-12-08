@@ -23,8 +23,8 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(
             create: (BuildContext context) => getIt<HomeCubit>()
-              ..getProductsData()
-              ..getFavData()),
+              ..getFavData()
+              ..getProductsData()),
         BlocProvider(create: (BuildContext context) => LoginCubit()),
         BlocProvider(create: (BuildContext context) => getIt<MapCubit>()),
         BlocProvider(create: (BuildContext context) => RegisterCubit()),

@@ -45,13 +45,12 @@ class _LoginScreenState extends State<LoginScreen> {
             CacheHelper.saveData(
                     key: 'token', value: state.loginModel.data!.token)
                 .then((value) async {
-              await HomeCubit.get(context).getFavData();
-              await HomeCubit.get(context).getProductsData();
-              context.pushReplacementNamed(Routes.homeScreen);
-
-              // Future.delayed(const Duration(seconds: 2), () {
-              // });
               Constants.token = state.loginModel.data!.token!;
+              await HomeCubit.get(context).getFavData();
+
+              Future.delayed(const Duration(seconds: 2), () {
+                context.pushReplacementNamed(Routes.homeScreen);
+              });
               print(Constants.token);
             });
           } else {
