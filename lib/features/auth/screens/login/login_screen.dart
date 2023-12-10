@@ -46,7 +46,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     key: 'token', value: state.loginModel.data!.token)
                 .then((value) async {
               Constants.token = state.loginModel.data!.token!;
+              await HomeCubit.get(context).getProductsData();
               await HomeCubit.get(context).getFavData();
+
 
               Future.delayed(const Duration(seconds: 2), () {
                 context.pushReplacementNamed(Routes.homeScreen);

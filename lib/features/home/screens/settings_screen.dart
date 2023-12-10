@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:uis_task/core/theming/styles.dart';
-import 'package:uis_task/core/widgets/app_text_button.dart';
 import 'package:uis_task/features/home/cubits/home_cubit.dart';
 import '../../../core/helpers/cache_helper.dart';
 import '../../../core/helpers/extensions.dart';
@@ -21,10 +19,8 @@ class SettingsScreen extends StatelessWidget {
           child: TextButton(
             onPressed: () {
               CacheHelper.removeData(key: 'token');
+             HomeCubit.get(context).fav={};
               HomeCubit.get(context).currentIndex=0;
-
-
-
               navigateAndFinish(context, const LoginScreen());
             },
             child: const Text(

@@ -24,7 +24,7 @@ class HomeCubit extends Cubit<HomeState> {
   ChangeFavoritesModel? changeFavoritesModel;
 
   FavModel? favModel;
-   Map<int, bool> fav ={};
+  Map<int, bool> fav = {};
 
   List<Widget> screen = [
     const ProductsScreen(),
@@ -51,7 +51,6 @@ class HomeCubit extends Cubit<HomeState> {
 
     await DioHelper.getData(url: HOME, token: Constants.token).then((value) {
       productsModel = ProductModel.fromJson(value.data);
-
       for (var element in productsModel!.data!.products!) {
         fav.addAll({
           element.id!: element.inFavorites!,

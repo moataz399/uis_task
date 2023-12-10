@@ -23,10 +23,19 @@ class ProductsScreen extends StatelessWidget {
           if (!state.model.status!) {
             Fluttertoast.showToast(
                 msg: state.model.message!,
-                toastLength: Toast.LENGTH_LONG,
+                toastLength: Toast.LENGTH_SHORT,
                 gravity: ToastGravity.BOTTOM,
                 timeInSecForIosWeb: 5,
                 backgroundColor: Colors.red,
+                textColor: Colors.white,
+                fontSize: 16.0);
+          } else {
+            Fluttertoast.showToast(
+                msg: state.model.message!,
+                toastLength: Toast.LENGTH_SHORT,
+                gravity: ToastGravity.BOTTOM,
+                timeInSecForIosWeb: 5,
+                backgroundColor: Colors.green,
                 textColor: Colors.white,
                 fontSize: 16.0);
           }
@@ -106,7 +115,7 @@ class ProductsScreen extends StatelessWidget {
                                               .products![index].discount !=
                                           0)
                                         Container(
-                                          padding:  EdgeInsets.symmetric(
+                                          padding: EdgeInsets.symmetric(
                                               horizontal: 5.w),
                                           color: Colors.red,
                                           child: const Text('Discount',
@@ -117,7 +126,7 @@ class ProductsScreen extends StatelessWidget {
                                     ],
                                   ),
                                   Padding(
-                                    padding:  EdgeInsets.symmetric(
+                                    padding: EdgeInsets.symmetric(
                                         horizontal: 12.w, vertical: 12.h),
                                     child: Column(
                                       children: [
@@ -147,7 +156,7 @@ class ProductsScreen extends StatelessWidget {
                                               Text(
                                                 '${cubit.productsModel!.data!.products![index].oldPrice!}',
                                                 overflow: TextOverflow.ellipsis,
-                                                style:  TextStyle(
+                                                style: TextStyle(
                                                   color: Colors.grey,
                                                   fontSize: 10.sp,
                                                   decoration: TextDecoration
@@ -156,24 +165,29 @@ class ProductsScreen extends StatelessWidget {
                                               ),
                                             const Spacer(),
                                             IconButton(
-                                                padding: EdgeInsets.zero,
-                                                onPressed: () {
-                                                  cubit.changeFav(cubit
-                                                      .productsModel!
-                                                      .data!
-                                                      .products![index]
-                                                      .id!);
-                                                },
-                                                icon: CircleAvatar(
-                                                    radius: 15,
-                                                    backgroundColor: cubit.fav[cubit.productsModel!.data!.products![index].id]!
-                                                        ? AppColors.mainBlue
-                                                        : Colors.grey,
-                                                    child: const Icon(
-                                                      Icons.favorite_border,
-                                                      size: 14,
-                                                      color: Colors.white,
-                                                    )))
+                                              padding: EdgeInsets.zero,
+                                              onPressed: () {
+                                                cubit.changeFav(cubit
+                                                    .productsModel!
+                                                    .data!
+                                                    .products![index]
+                                                    .id!);
+                                              },
+                                              icon: cubit.fav[cubit
+                                                          .productsModel!
+                                                          .data!
+                                                          .products![index]
+                                                          .id]!
+                                                  ?   Icon(
+                                                Icons.favorite,
+                                                size: 18,
+                                              )
+                                                  :Icon(
+                                                Icons
+                                                    .favorite_outline_sharp,
+                                                size: 18,
+                                              ) ,
+                                            ),
                                           ],
                                         ),
                                       ],

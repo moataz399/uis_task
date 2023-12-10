@@ -43,14 +43,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
             print(state.registerModel.message);
             CacheHelper.saveData(
                     key: 'token', value: state.registerModel.data!.token)
-                .then((value)async {
+                .then((value) async {
               Constants.token = state.registerModel.data!.token!;
-            await  HomeCubit.get(context).getFavData();
-              Future.delayed(const Duration(seconds: 2), () {
-                context.pushReplacementNamed(Routes.homeScreen);
-              });
-
-              print(Constants.token);
+              await HomeCubit.get(context).getProductsData();
+              await HomeCubit.get(context).getFavData();
+              context.pushReplacementNamed(Routes.homeScreen);
             });
           } else {
             Fluttertoast.showToast(
